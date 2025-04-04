@@ -25,7 +25,7 @@ function removeTask(id: number) {
 
 <template>
   <div class="app">
-    <h1>TaskFlow</h1>
+    <h1>Task Board</h1>
     <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a task..." />
     <ul>
       <li v-for="task in tasks" :key="task.id">
@@ -33,6 +33,9 @@ function removeTask(id: number) {
         <button @click="removeTask(task.id)">❌</button>
       </li>
     </ul>
+    <p v-show="tasks.length === 0" class="no-results">
+      No tasks available. Add a task to get started!
+    </p>
   </div>
 </template>
 
@@ -102,5 +105,12 @@ button {
 
 button:hover {
   color: #ff867c;
+}
+
+.no-results {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 20px;
 }
 </style>
